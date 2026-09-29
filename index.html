@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="THE WHAT? VERSES — News nobody asked for, but someone had to report.">
+  <title>THE WHAT? VERSES | Strange News</title>
+  <style>
+    :root{
+      --ink:#111;
+      --paper:#f7f3e9;
+      --paper2:#fffdf7;
+      --line:#171717;
+      --accent:#d71920;
+      --muted:#666;
+      --yellow:#f4d35e;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#dedbd2;
+      font-family:Georgia,"Times New Roman",serif;
+    }
+    a{color:inherit}
+    .topline{height:7px;background:var(--ink)}
+    .paper{
+      width:min(1180px,94%);
+      margin:0 auto;
+      min-height:100vh;
+      background:var(--paper);
+      box-shadow:0 0 35px #0002;
+    }
+    header{padding:22px 5% 0}
+    .utility{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:9px;
+      font:700 11px/1.3 Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
+    .masthead{
+      text-align:center;
+      padding:20px 0 15px;
+      border-bottom:5px double var(--line);
+    }
+    .masthead h1{
+      margin:0;
+      font-size:clamp(42px,8vw,92px);
+      line-height:.82;
+      letter-spacing:-4px;
+      font-weight:900;
+    }
+    .masthead h1 span{color:var(--accent)}
+    .masthead p{
+      margin:14px 0 0;
+      font:700 11px Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:3px;
+    }
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      font:700 12px Arial,sans-serif;
+      text-transform:uppercase;
+    }
+    nav a{text-decoration:none}
+    nav a:hover{color:var(--accent)}
+    main{padding:28px 5% 55px}
+    .breaking{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:20px;
+      font:900 12px Arial,sans-serif;
+      text-transform:uppercase;
+    }
+    .breaking b{
+      background:var(--accent);
+      color:#fff;
+      padding:7px 10px;
+      animation:pulse 1.8s infinite;
+    }
+    @keyframes pulse{50%{opacity:.55}}
+    .date{
+      color:var(--muted);
+      font:700 12px Arial,sans-serif;
+    }
+    .headline{
+      border-bottom:1px solid var(--line);
+      padding-bottom:22px;
+    }
+    .headline h2{
+      max-width:1050px;
+      margin:0;
+      font-size:clamp(40px,6.5vw,78px);
+      line-height:.94;
+      letter-spacing:-2px;
+    }
+    .subhead{
+      max-width:850px;
+      margin:18px 0 0;
+      font-size:clamp(18px,2vw,25px);
+      line-height:1.3;
+      color:#333;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:18px;
+      font:700 11px Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+    .hero{
+      margin:28px 0;
+      min-height:390px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 20% 25%, #ffffff55 0 3px, transparent 4px),
+        linear-gradient(135deg,#18202b,#293f55 45%,#111 46%,#242424);
+      display:grid;
+      place-items:center;
+    }
+    .hero::before{
+      content:"39 / 02";
+      position:absolute;
+      top:18px;
+      left:20px;
+      color:#fff8;
+      font:900 14px Arial,sans-serif;
+      letter-spacing:3px;
+    }
+    .scene{position:relative;width:min(680px,88%);height:300px}
+    .dino{
+      position:absolute;
+      left:8%;
+      bottom:20px;
+      font-size:150px;
+      filter:drop-shadow(10px 10px 0 #0005);
+      transform:rotate(-4deg);
+      animation:bob 3s ease-in-out infinite;
+    }
+    .pool{
+      position:absolute;
+      right:4%;
+      bottom:10px;
+      width:330px;
+      height:135px;
+      border:6px solid #fff;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 12% 40%,#f9d65c 0 8px,transparent 9px),
+        radial-gradient(circle at 25% 65%,#df4a4a 0 9px,transparent 10px),
+        radial-gradient(circle at 45% 35%,#fff 0 8px,transparent 9px),
+        radial-gradient(circle at 62% 60%,#222 0 9px,transparent 10px),
+        radial-gradient(circle at 80% 35%,#e9e0d2 0 8px,transparent 9px),
+        #7aa6c2;
+      box-shadow:inset 0 0 0 10px #ffffff44;
+    }
+    .pot{
+      position:absolute;
+      right:25%;
+      bottom:98px;
+      font-size:70px;
+      animation:wiggle 2s ease-in-out infinite;
+    }
+    .actress{
+      position:absolute;
+      right:9%;
+      bottom:142px;
+      font-size:74px;
+    }
+    .caption{
+      position:absolute;
+      left:18px;
+      bottom:16px;
+      color:#fff;
+      font:700 10px Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    @keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+    @keyframes wiggle{50%{transform:rotate(4deg) translateY(-5px)}}
+    .layout{
+      display:grid;
+      grid-template-columns:minmax(0,2fr) minmax(250px,.8fr);
+      gap:34px;
+    }
+    article{font-size:19px;line-height:1.7}
+    article p{margin:0 0 20px}
+    .dropcap:first-letter{
+      float:left;
+      font-size:68px;
+      line-height:.8;
+      padding:8px 9px 0 0;
+      font-weight:900;
+      color:var(--accent);
+    }
+    .quote{
+      margin:28px 0;
+      padding:18px 22px;
+      border-top:4px solid var(--ink);
+      border-bottom:4px solid var(--ink);
+      font-size:27px;
+      line-height:1.15;
+      font-weight:700;
+    }
+    .quote small{
+      display:block;
+      margin-top:10px;
+      font:700 10px Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    aside{
+      border-left:1px solid var(--line);
+      padding-left:24px;
+    }
+    .box{
+      border:2px solid var(--line);
+      padding:18px;
+      margin-bottom:20px;
+      background:var(--paper2);
+    }
+    .box h3{
+      margin:0 0 14px;
+      font:900 17px Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    .facts{list-style:none;padding:0;margin:0}
+    .facts li{
+      padding:12px 0;
+      border-top:1px solid #0003;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .facts li:first-child{border-top:0}
+    .facts strong{color:var(--accent)}
+    .classified{
+      background:var(--ink);
+      color:#fff;
+      transform:rotate(1deg);
+    }
+    .classified h3{color:var(--yellow)}
+    .classified p{margin:0;font-size:15px;line-height:1.5}
+    .weird{
+      margin-top:35px;
+      border-top:5px double var(--line);
+      padding-top:20px;
+    }
+    .weird h3{
+      margin:0 0 12px;
+      font-size:27px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      padding:15px;
+      min-height:145px;
+      background:var(--paper2);
+      transition:.2s transform,.2s box-shadow;
+    }
+    .card:hover{
+      transform:translateY(-5px) rotate(-1deg);
+      box-shadow:6px 6px 0 var(--accent);
+    }
+    .emoji{font-size:30px}
+    .card h4{margin:8px 0 5px;font-size:17px}
+    .card p{margin:0;font-size:14px;line-height:1.35}
+    footer{
+      background:var(--ink);
+      color:#fff;
+      padding:28px 5%;
+      text-align:center;
+      font:11px/1.6 Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    .secret{
+      cursor:pointer;
+      color:var(--accent);
+      font-weight:900;
+    }
+    #toast{
+      position:fixed;
+      left:50%;
+      bottom:25px;
+      transform:translate(-50%,30px);
+      background:var(--ink);
+      color:#fff;
+      padding:12px 18px;
+      border:2px solid #fff;
+      box-shadow:0 8px 25px #0004;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s;
+      font:700 12px Arial,sans-serif;
+      z-index:10;
+    }
+    #toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:800px){
+      .layout{grid-template-columns:1fr}
+      aside{border-left:0;border-top:1px solid var(--line);padding:25px 0 0}
+      .cards{grid-template-columns:1fr}
+      .hero{min-height:310px}
+      .dino{font-size:105px;left:0}
+      .pool{width:230px;height:105px;right:0}
+      .pot{right:26%;font-size:55px}
+      .actress{font-size:55px;right:5%}
+      nav{gap:15px;font-size:10px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline"></div>
+  <div class="paper">
+
+    <header id="home">
+      <div class="utility">
+        <span>Extraordinary Edition</span>
+        <span>Medellín · February 39</span>
+        <span>Price: One Question</span>
+      </div>
+
+      <div class="masthead">
+        <h1>THE WHAT<span>?</span> VERSES</h1>
+        <p>The news nobody asked for, but someone had to report</p>
+      </div>
+
+      <nav>
+        <a href="#news">News</a>
+        <a href="#strange">Strange</a>
+        <a href="#latest">Latest</a>
+      </nav>
+    </header>
+
+    <main id="news">
+      <div class="breaking">
+        <b>BREAKING NEWS</b>
+        <span>The case remains completely unexplained</span>
+      </div>
+
+      <section class="headline">
+        <div class="date">Medellín, February 39 · Special Report</div>
+        <h2>Man Went Out for Water and Ended Up Finding a Three-Headed Dinosaur</h2>
+        <p class="subhead">
+          The strange trip ended with a zombie, a famous actress and a soup being cooked inside a pool filled with billiard balls.
+        </p>
+        <div class="meta">
+          <span>By: The What? Verses Newsroom</span>
+          <span>Reading time: 2 minutes</span>
+          <span>Status: Nobody Knows</span>
+        </div>
+      </section>
+
+      <div class="hero" aria-label="Absurd illustration of the news story">
+        <img
+          src="wide_cinematic_photorealistic_chaotic_backyard.png"
+          alt="A three-headed dinosaur, a zombie and an actress making soup in a pool"
+          style="width:100%;height:100%;min-height:390px;object-fit:cover;display:block;"
+        >
+        <div class="caption">Reconstruction of the events according to people who were there</div>
+      </div>
+
+      <div class="layout">
+        <article>
+          <p class="dropcap">
+            On February 39, a man opened his refrigerator to get a glass of water from the beach that he had inside.
+            When he looked at his table, there was no bread, so he told his wife to go get some.
+          </p>
+
+          <p>
+            On the way, the woman found a three-headed dinosaur. Since it was small, she felt sorry for leaving it and took it home.
+          </p>
+
+          <p>
+            When they arrived, the bread was left on the table, and she told her husband to go to the backyard to see what she had brought.
+            When they got there, all the plants had been eaten by the dinosaur, so they both ran away.
+          </p>
+
+          <p>
+            When the dinosaur saw the man, it got scared and ran away too. The worried woman followed it until she reached a zombie's house.
+          </p>
+
+          <div class="quote">
+            “The soup was not in a pot. It was being cooked directly in the pool.”
+            <small>— The woman's statement</small>
+          </div>
+
+          <p>
+            When she arrived, the most famous actress in Hollywood was found making soup directly in a pool filled with billiard balls.
+            According to the actress, the pot was occupied because the zombies were having a party with it.
+          </p>
+
+          <p>
+            The situation became even stranger when the dinosaur got into the soup and said that it was very cold.
+          </p>
+
+          <p id="latest">
+            So far, nobody knows why a three-headed dinosaur, a zombie, an actress and a pool filled with billiard balls were all in the same place.
+          </p>
+        </article>
+
+        <aside>
+          <div class="box">
+            <h3>Case Facts</h3>
+            <ul class="facts">
+              <li><strong>February 39</strong> was the official date of the incident.</li>
+              <li>The dinosaur had <strong>3</strong> heads.</li>
+              <li><strong>1</strong> zombie appeared during the chase.</li>
+              <li><strong>0</strong> reasonable explanations exist.</li>
+              <li><strong>∞</strong> questions remained afterward.</li>
+            </ul>
+          </div>
+
+          <div class="box classified">
+            <h3>⚠ Unsolved Case</h3>
+            <p>
+              The investigation remains open. Authorities are trying to determine
+              why someone decided to make soup in a pool filled with billiard balls.
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>Forecast</h3>
+            <p style="margin:0;font-size:16px;line-height:1.5;">
+              90% chance another dinosaur will appear.
+              10% chance it is simply Tuesday.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <section class="weird" id="strange">
+        <h3>Other Things That Make No Sense</h3>
+        <div class="cards">
+          <div class="card">
+            <div class="emoji">🧟</div>
+            <h4>The Zombie</h4>
+            <p>It was seen near the pool, but nobody knows if it had actually been invited to the party.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">🎱</div>
+            <h4>The Pool</h4>
+            <p>It had no water. It was filled with billiard balls and, for some reason, soup.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">🥖</div>
+            <h4>The Bread</h4>
+            <p>It was the reason for the whole situation, and nobody knows where it ended up.</p>
+          </div>
+        </div>
+      </section>
+
+      <div style="text-align:center;margin-top:35px;font:12px Arial,sans-serif;">
+        <span class="secret" onclick="showSecret()">Psst... click here if you understood nothing either.</span>
+      </div>
+    </main>
+
+    <footer>
+      THE WHAT? VERSES · February 39 Edition · All events are completely unexplained.
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    function showSecret(){
+      const messages = [
+        "Confirmed: nobody understood.",
+        "The dinosaur did not understand either.",
+        "The actress says the soup was good.",
+        "The bread is still missing.",
+        "The investigation was suspended due to a lack of sense."
+      ];
+      const toast = document.getElementById("toast");
+      toast.textContent = messages[Math.floor(Math.random()*messages.length)];
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+  </script>
+</body>
+</html>
